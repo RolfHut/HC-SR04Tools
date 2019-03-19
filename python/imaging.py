@@ -65,6 +65,7 @@ axes = plt.gca()
 axes.set_xlim([0,70])
 axes.set_ylim([0,70])
 
+plt.figure(1)
 # plot the ellipses
 for i in range(n):
     # plot the source and receiver location
@@ -83,9 +84,12 @@ for i in range(n):
     x = xm[i] + 0.5*R[i]*np.cos(th)*np.cos(teta) - d[i]*np.sin(th)*np.sin(teta);
     y = ym[i] + 0.5*R[i]*np.cos(th)*np.sin(teta) + d[i]*np.sin(th)*np.cos(teta);
     plt.plot(x,y)
+    
     # h=ellipse(xm(i),ym(i),R(i)/2,d(i),teta)
     print(teta)
-    plt.pause(0.1)
+    
+   
+
 
 # starting values of parameters and search range
 x00=45
@@ -108,7 +112,7 @@ objfunmin=9999
 eps=1.0
 
 # number of random search points
-nrand=1000
+nrand=2000
 
 # iterate over new starting points
 for iter in range(10):
@@ -163,19 +167,19 @@ for iter in range(10):
             # plot this object
             plt.plot(x1,y1,'r')
             plt.plot(x2,y2,'r')
-            plt.pause(0.1)
+            #plt.pause(0.1)
             # save these values
-            x0min=x0
-            y0min=y0
-            alphamin=alpha
-            betamin=beta
+            x00=x0
+            y00=y0
+            alpha0=alpha
+            beta0=beta
             # save the plotted object
             x1min=x1
             y1min=y1
             x2min=x2
             y2min=y2
             objfunmin=objfun
-            time.sleep(1)
+            #time.sleep(1)
         # check if it is within the best values and unique
         if (objfun<objfunminbest[nbest-1]):
             # check which position
@@ -198,7 +202,7 @@ for iter in range(10):
     # plot final again for this iteration
     plt.plot(x1min,y1min,'m',linewidth=2.0)
     plt.plot(x2min,y2min,'m',linewidth=2.0)
-    plt.pause(0.1)
+    #plt.pause(0.1)
     # end of this iteration
     print("end of iteration ",iter)
     # display final result for parameters with standard deviation
@@ -206,8 +210,12 @@ for iter in range(10):
     print("Best beta = %6.2f with standard deviation= %6.2f" % (np.mean(betaminbest),np.std(betaminbest)))
     print("Best x0   = %6.2f with standard deviation= %6.2f" % (np.mean(x0minbest),np.std(x0minbest)))
     print("Best y0   = %6.2f with standard deviation= %6.2f" % (np.mean(y0minbest),np.std(y0minbest)))
-    time.sleep(1)
-
+    
+    d_xy = 2 * max(np.std(x0minbest),np.std(y0minbest))
+    d_angle = 2 * max(np.std(betaminbest),np.std(alphaminbest))
+    
+    #time.sleep(1)
+plt.show()
 # define new figure te replot ellipses and optimum object
 plt.figure()
 axes = plt.gca()
@@ -234,17 +242,15 @@ for i in range(n):
     plt.plot(x,y)
     # h=ellipse(xm(i),ym(i),R(i)/2,d(i),teta)
     print(teta)
-    plt.pause(0.1)
+    #plt.pause(0.1)
 
 # plot best object location
 plt.plot(x1min,y1min,'k',linewidth=4.0)
 plt.plot(x2min,y2min,'k',linewidth=4.0)
-plt.pause(0.1)
+plt.show()
 
 
 # define new figure
 plt.figure()
 plt.plot(objfunminbest)
-plt.pause(0.1)
-
-input("Press Enter to finish....")
+plt.show()
