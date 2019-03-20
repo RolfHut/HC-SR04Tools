@@ -4,33 +4,43 @@ import numpy as np
 import random
 import time
 
+#There are two ways of getting data into this file. Either read it from a csv 
+# file, using the "data = pd.read...." line. Make sure the csv file with the 
+#data is in the same directory as this file and that the data is seperated by 
+#using a ","
+#The other way is by entering it manually using the "data = pd.DataFrame..." 
+#line. In that case, enter all data manually.
+#
+# Uncomment the line that you want to use.
+#
+
 
 # read the CSV file, in this case with ; separation
+data= pd.read_csv('DEF_metingen_test.csv', sep=",", header=None, names=["xs", "ys", "xr", "yr", "R"])
 
-#data= pd.read_csv('DEF.csv', sep=";", header=None, names=["xs", "ys", "xr", "yr", "R"])
-#data= pd.read_csv('DEF_metingen_test.csv', sep=";", header=None, names=["xs", "ys", "xr", "yr", "R"])
-
-data = pd.DataFrame(columns=["xs", "ys", "xr", "yr", "R"], data=[
-    [0,60,0,50,41.2],
-    [0,50,0,40,41.2],
-    [0,50,0,40,41.2],
-    [0,40,0,30,41.2],
-    [0,30,0,20,41.2],
-    [0,60,0,40,44.6],
-    [0,50,0,30,44.6],
-    [0,40,0,20,44.6],
-    [0,30,0,10,44.6],
-    [0,60,0,30,50.0],
-    [0,50,0,20,50.0],
-    [0,40,0,10,50.0],
-    [10,0,30,0,44.6],
-    [20,0,40,0,44.6],
-    [30,0,50,0,44.6],
-    [40,0,60,0,44.6],
-    [10,0,40,0,50.0],
-    [20,0,50,0,50.0],
-    [30,0,60,0,50.0]
-    ])
+# =============================================================================
+# data = pd.DataFrame(columns=["xs", "ys", "xr", "yr", "R"], data=[
+#     [0,60,0,50,41.2],
+#     [0,50,0,40,41.2],
+#     [0,50,0,40,41.2],
+#     [0,40,0,30,41.2],
+#     [0,30,0,20,41.2],
+#     [0,60,0,40,44.6],
+#     [0,50,0,30,44.6],
+#     [0,40,0,20,44.6],
+#     [0,30,0,10,44.6],
+#     [0,60,0,30,50.0],
+#     [0,50,0,20,50.0],
+#     [0,40,0,10,50.0],
+#     [10,0,30,0,44.6],
+#     [20,0,40,0,44.6],
+#     [30,0,50,0,44.6],
+#     [40,0,60,0,44.6],
+#     [10,0,40,0,50.0],
+#     [20,0,50,0,50.0],
+#     [30,0,60,0,50.0]
+#     ])
+# =============================================================================
 print(data)
 
 # assign arrays to the columns of the input
