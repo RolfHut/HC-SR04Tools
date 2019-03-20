@@ -90,8 +90,8 @@ for i in range(n):
     plt.plot(x,y)
     # h=ellipse(xm(i),ym(i),R(i)/2,d(i),teta)
     # print(teta)
+    plt.pause(0.1)
 
-    
 # starting values of parameters and search range
 x00=45
 y00=45
@@ -176,7 +176,7 @@ for iter in range(niter):
             # plot this object
             plt.plot(x1,y1,'r',linewidth=0.5)
             plt.plot(x2,y2,'r',linewidth=0.5)
-            #plt.pause(0.1)
+            plt.pause(0.1)
             # save these values
             x0min=x0
             y0min=y0
@@ -213,7 +213,7 @@ for iter in range(niter):
     # plot final again for this iteration
     plt.plot(x1min,y1min,'m',linewidth=2.0)
     plt.plot(x2min,y2min,'m',linewidth=2.0)
-    
+    plt.pause(0.1)
     # end of this iteration
     print("###############################################################################")
     print("end of iteration ",iter+1)
@@ -231,8 +231,6 @@ for iter in range(niter):
     beta0=betamin
     d_xy=max(1,2*(np.std(x0minbest)+np.std(y0minbest)))
     d_angle=max(2,2*(np.std(alphaminbest)+np.std(betaminbest)))
-
-plt.show()
 
 # define new figure te replot ellipses and optimum object
 plt.figure(figsize=(8,8))
@@ -262,12 +260,12 @@ for i in range(n):
     plt.plot(x,y)
     # h=ellipse(xm(i),ym(i),R(i)/2,d(i),teta)
     # print(teta)
-    
+    plt.pause(0.1)
 
 # plot best object location
 plt.plot(x1min,y1min,'k',linewidth=4.0)
 plt.plot(x2min,y2min,'k',linewidth=4.0)
-plt.show()
+plt.pause(0.1)
 
 
 # For QC: figure with besy objfun values
@@ -275,3 +273,4 @@ plt.show()
 # plt.plot(objfunminbest)
 # plt.pause(0.1)
 
+input("Press Enter to finish....")

@@ -58,7 +58,7 @@ void loop() {
 long HCSR04Measurement(int trigger, int echo){
   digitalWrite(trigger, LOW);  
   delayMicroseconds(2); 
-  digitalWrite(echo, HIGH);
+  digitalWrite(trigger, HIGH);
   delayMicroseconds(10);
   digitalWrite(trigger, LOW);
   return pulseIn(echo, HIGH);
